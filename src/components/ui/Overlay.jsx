@@ -286,17 +286,33 @@ export default function Overlay() {
       </Section>
 
       {/* 11. FOOTER */}
-      <Section id='social' className='pb-24'>
-        <footer className='pointer-events-auto flex flex-col gap-4 text-sm text-gray-400 sm:flex-row sm:items-center sm:justify-between'>
-          <span>© {new Date().getFullYear()} Atharva Palve</span>
-          <div className='flex gap-4 text-xs uppercase tracking-[0.22em] text-gray-200'>
-            <a href='https://github.com/Atharvapalve' target="_blank" rel="noopener noreferrer" className='hover:text-white'>
+      <Section id='social' className='pb-40 pt-10'>
+        <footer className='pointer-events-auto flex flex-col gap-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between border-t border-white/10 pt-8'>
+          
+          <span className="text-center sm:text-left">
+            © {new Date().getFullYear()} Atharva Palve
+          </span>
+
+          {/* Social Links - Centered on Mobile, Row on Desktop */}
+          <div className='flex justify-center gap-8 text-xs uppercase tracking-[0.2em] font-medium'>
+            <a 
+              href='https://github.com/Atharvapalve' 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className='hover:text-white transition-colors p-2' // Added padding for easier tapping
+            >
               GitHub
             </a>
-            <a href='https://linkedin.com/in/atharva-palve' target="_blank" rel="noopener noreferrer" className='hover:text-white'>
+            <a 
+              href='https://linkedin.com/in/atharva-palve' 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className='hover:text-white transition-colors p-2'
+            >
               LinkedIn
             </a>
           </div>
+
         </footer>
       </Section>
     </main>
