@@ -23,14 +23,15 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;      /* ✅ keep horizontal locked if you want */
+  overflow-y: auto;        /* ✅ allow vertical scroll */
   background: radial-gradient(circle at 10% 0%, #111827 0, #020617 40%, #020617 100%);
   color: #e5e7eb;
 }
 
 #root {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Luxury scrollbar */
