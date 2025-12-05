@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF, Float, Stars, Environment, Trail, CameraShake, Center } from '@react-three/drei'
 import * as THREE from 'three'
@@ -9,58 +9,65 @@ export default function Spaceship() {
   const group = useRef()
   const lastScroll = useRef(0)
   const [boost, setBoost] = useState(0)
+  
+  // Responsive State
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useFrame((state, delta) => {
-    // 1. SAFETY CHECK
     const scroll = useStore.getState().scrollProgress || 0
     const scrollDelta = scroll - lastScroll.current
     lastScroll.current = scroll
 
-    // 2. DEFINE TARGETS
-    const targetPos = new THREE.Vector3(3, -1, 0)
+    // --- RESPONSIVE FLIGHT PATH ---
+    const targetPos = new THREE.Vector3(0, 0, 0)
     const targetRot = new THREE.Euler(0, 0, 0)
 
     if (scroll < 0.1) {
-      // HERO: Right Side Patrol
-      targetPos.set(3, -1.5, 0)
+      // HERO
+      // Desktop: Right side | Mobile: Center, slightly lower
+      targetPos.set(isMobile ? 0 : 3, isMobile ? -1 : -1.5, 0)
       targetRot.set(0.1, Math.PI - 0.3, 0)
     } 
     else if (scroll >= 0.1 && scroll < 0.35) {
-      // ABOUT: Inspection (Center)
-      targetPos.set(0, -1, 3) 
+      // ABOUT
+      // Desktop: Center Close | Mobile: Center Close (Higher up)
+      targetPos.set(0, isMobile ? 1 : -1, 3) 
       targetRot.set(0.3, Math.PI, 0.2)
     } 
     else if (scroll >= 0.35 && scroll < 0.65) {
-      // GRID: The Climb (Y=6)
-      targetPos.set(0, 6, -5)
+      // GRID
+      // Fly Up (Reduced height for mobile so it doesn't vanish too fast)
+      targetPos.set(0, isMobile ? 5 : 6, -5)
       targetRot.set(-1, Math.PI, 0)
     } 
     else if (scroll >= 0.65 && scroll < 0.85) {
-      // EXPERIENCE: Cruising Left
-      targetPos.set(-4, -1, 0)
+      // EXPERIENCE
+      // Desktop: Left Side | Mobile: Center Bottom (Background)
+      targetPos.set(isMobile ? 0 : -4, -1, 0)
       targetRot.set(0, Math.PI + 0.3, 0)
     } 
     else if (scroll >= 0.85) {
-      // END: THE SLOW CINEMATIC EXIT
-      // 1. Position: Fly Right (X=9) and Zoom In (Z=2)
-      // We reduced X slightly so it doesn't disappear too fast
       targetPos.set(5, 1, 6) 
       
       // 2. Rotation: REVERSED & ROTATED
       // Y = Math.PI / 2 + 0.5 (Anticlockwise rotation while turning right)
       // Z = 0.8 (Positive Bank = Tilts top/belly towards camera depending on model axis)
       // X = 0 (Level horizon)
-      targetRot.set(0, Math.PI / 2 + 2, 1.7) 
+      targetRot.set(0, Math.PI / 2 + 2, 1.7)
     }
 
-    // 3. PHYSICS (Slower = More Majestic)
-    // Changed from 2 to 1 for a very heavy, cinematic glide.
+    // --- PHYSICS ---
     const smooth = 1 * delta 
-
-    // Position
     group.current.position.lerp(targetPos, smooth)
 
-    // Rotation (Banking)
+    // Banking
     const bank = scrollDelta * 10
     group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, targetRot.x, smooth)
     group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRot.y, smooth)
@@ -78,22 +85,20 @@ export default function Spaceship() {
       <Environment preset="city" intensity={1} />
       <directionalLight position={[-5, 5, 5]} intensity={3} color="#00f0ff" />
 
-      <CameraShake
-        intensity={boostIntensity}
-        maxYaw={0.1} maxPitch={0.1} maxRoll={0.1}
-      />
+      <CameraShake intensity={boostIntensity} maxYaw={0.1} maxPitch={0.1} maxRoll={0.1} />
 
       <group ref={group}>
         <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-          <Trail width={1.5} length={5} color="#00f0ff" attenuation={(t) => t * t}>
+          <Trail width={isMobile ? 1 : 1.5} length={5} color="#00f0ff" attenuation={(t) => t * t}>
              <Center top>
-                <primitive object={scene} scale={2} rotation={[0, Math.PI, 0]} />
+                {/* Responsive Scale: Smaller on Mobile */}
+                <primitive object={scene} scale={isMobile ? 1.4 : 2} rotation={[0, Math.PI, 0]} />
              </Center>
           </Trail>
         </Float>
       </group>
 
-      <Stars radius={80} count={6000} factor={4} fade speed={2} />
+      <Stars radius={80} count={isMobile ? 2000 : 6000} factor={4} fade speed={2} />
     </group>
   )
 }

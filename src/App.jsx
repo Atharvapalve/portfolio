@@ -93,7 +93,7 @@ export default function App() {
       {!ready && <CustomLoader onStarted={setReady} />}
 
       {/* 2. 3D BACKGROUND (Loads immediately behind the black screen) */}
-      <div className="fixed inset-0 z-0 pointer-events-auto">
+      <div className="fixed inset-0 z-0 pointer-events-auto" style={{ touchAction: 'pan-y' }}>
         <Canvas camera={{ position: [0, 0, 8], fov: 35 }}>
           <ambientLight intensity={0.5} />
           <Suspense fallback={null}>
