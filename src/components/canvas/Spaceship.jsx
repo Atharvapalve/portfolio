@@ -65,7 +65,13 @@ export default function Spaceship() {
 
     // --- PHYSICS ---
     const smooth = 1 * delta 
-    group.current.position.lerp(targetPos, smooth)
+    const mouseX = isMobile ? 0 : (state.pointer.x * 0.5)
+    const mouseY = isMobile ? 0 : (state.pointer.y * 0.5)
+
+    // 2. Apply Position with Mouse Influence
+    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, targetPos.x + mouseX, smooth)
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, targetPos.y + mouseY, smooth)
+    group.current.position.z = THREE.MathUtils.lerp(group.current.position.z, targetPos.z, smooth)
 
     // Banking
     const bank = scrollDelta * 10

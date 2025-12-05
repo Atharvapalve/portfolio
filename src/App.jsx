@@ -1,11 +1,12 @@
-import { useEffect, Suspense, useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import Lenis from 'lenis' // Check if you use 'lenis' or '@studio-freight/react-lenis'
+import Lenis from 'lenis'
 import { useProgress } from '@react-three/drei'
 import { useStore } from './store/useStore'
 import Spaceship from './components/canvas/Spaceship'
 import Overlay from './components/ui/Overlay'
 
+// --- CUSTOM LOADER COMPONENT ---
 function CustomLoader({ onStarted }) {
   const { progress } = useProgress()
   const [percentage, setPercentage] = useState(0)
@@ -69,12 +70,19 @@ export default function App() {
       {!ready && <CustomLoader onStarted={setReady} />}
 
       {/* 3D BACKGROUND */}
-      {/* touchAction: 'pan-y' allows vertical scroll on mobile while keeping horizontal touch for steering */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-auto"
-        style={{ touchAction: 'pan-y' }} 
-      >
-        <Canvas camera={{ position: [0, 0, 8], fov: 35 }}>
+      <div className="fixed inset-0 z-0">
+        {/* CRITICAL FIX FOR MOBILE SCROLLING:
+           1. pointer-events-auto: Allows clicks on the ship.
+           2. touch-action: pan-y: Tells browser "Allow vertical scrolling even if I touch the canvas".
+           3. style prop passed to Canvas applies to the actual DOM element.
+        */}
+        <Canvas 
+          camera={{ position: [0, 0, 8], fov: 35 }}
+          style={{ 
+            pointerEvents: 'auto', 
+            touchAction: 'pan-y' 
+          }}
+        >
           <ambientLight intensity={0.5} />
           <Suspense fallback={null}>
              <Spaceship />
