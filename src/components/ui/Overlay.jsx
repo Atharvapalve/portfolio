@@ -11,14 +11,12 @@ const skills = ['Python', 'PyTorch', 'TensorFlow', 'MERN Stack', 'FastAPI', 'Red
 const workExperience = [
   {
     title: 'IoT & ML Intern · ArmsRobotics',
-    meta: '2024 · Remote',
-    body: 'Engineered embedded ML prototypes and real-time telemetry dashboards. Deployed systems to Reliance Refineries & Vantara.',
-  },
+    meta: '2025 · Remote',
+    body: 'Engineered embedded ML prototypes for Reliance Refineries & Vantara. Achieved 90%+ classification accuracy on edge devices while keeping real-time telemetry latency under 300ms.',  },
   {
     title: 'Full Stack Intern · Vanillakart',
     meta: '2024 · Remote',
-    body: 'Designed wallet and inventory architecture for a custom commerce stack. Optimized CI/CD pipelines by 25%.',
-  },
+    body: 'Architected wallet and inventory modules for a custom MERN commerce stack. Automated CI/CD workflows using Git, improving deployment pipeline efficiency by 25%.',  },
 ];
 
 const education = [
@@ -45,13 +43,13 @@ const achievements = [
   },
   {
     title: 'What Is Generative AI?',
-    subtitle: 'LinkedIn Learning · 2024',
+    subtitle: 'LinkedIn Learning · 2025',
     // The Direct Certificate Link you provided
     link: 'https://www.linkedin.com/learning/certificates/45a796cf8f4b3f6fa8b6970337c30bf5cbec298a2f8e42629447e747b6e3d642?trk=share_certificate'
   },
   {
     title: 'Applied AI & Generative AI',
-    subtitle: 'LinkedIn Learning · 2024',
+    subtitle: 'LinkedIn Learning · 2025',
     // The Post Link regarding Applied AI
     link: 'https://www.linkedin.com/posts/atharva-palve_ai-generativeai-artificialintelligence-share-7311007575557242880-7KrT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE04ud4B18BZVd8TaTuYcYiPywvawZ5X6ts'
   },
@@ -193,14 +191,16 @@ export default function Overlay() {
                 <div className='space-y-2'>
                   <p className='text-xs uppercase tracking-[0.25em] text-gray-500'>{project.year}</p>
                   <h3 className='text-lg font-medium text-gray-100'>{project.title} ↗</h3>
-                  <p className='text-sm text-gray-400'>{project.category}</p>
+
+                  <p className="text-xs text-gray-400 leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
                 </div>
                 <div className='mt-4 flex flex-wrap gap-2 text-[0.65rem] text-gray-300'>
                   {(project.tech || []).map((tag) => (
                     <span
                       key={tag}
-                      className='rounded-full border border-white/15 px-3 py-1 text-gray-200 transition group-hover:border-white/40'
-                    >
+                      className='rounded-full border border-white/15 px-3 py-1 text-gray-200 transition group-hover:border-white/40'>
                       {tag}
                     </span>
                   ))}
