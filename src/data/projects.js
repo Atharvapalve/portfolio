@@ -9,7 +9,7 @@ const projects = [
     tech: ['Python', 'Cryptography', 'Simulation'],
     size: 'wide',
     color: '#3366ff',
-    link: null // No link yet (Research)
+    link: 'https://github.com/Atharvapalve/M.A.S.K..git' // No link yet (Research)
   },
   {
     title: 'WaveHabitat',
