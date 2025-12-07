@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Section from './Section';
 import Controls from './Controls';
+import NavigationDock from './NavigationDock';
 import { featuredProjects, archiveProjects } from '../../data/projects';
 import { Timeline } from './Timeline';
 import { useStore } from '../../store/useStore';
@@ -63,6 +64,7 @@ export default function Overlay() {
     <main className="relative z-10 min-h-screen bg-transparent text-gray-200 pointer-events-none">
       {/* RENDER CONTROLS HERE (Top Right) */}
       <Controls />
+      <NavigationDock />
       {/* 1. HERO (UPDATED - ELEGANT VERSION) */}
       <Section id="hero" className="pt-24" sectionKey="hero">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">

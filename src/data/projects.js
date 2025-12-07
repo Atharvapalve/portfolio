@@ -49,7 +49,7 @@ const projects = [
     tech: ['R3F', 'WebGL', 'Tailwind'],
     size: 'square',
     color: '#ffffff',
-    link: 'https://atharva-palve.vercel.app/' // Points to your profile
+    link: 'https://github.com/Atharvapalve/portfolio.git' // Points to your profile
   },
 ];
 
