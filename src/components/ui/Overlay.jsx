@@ -7,7 +7,16 @@ import { Timeline } from './Timeline';
 import { useStore } from '../../store/useStore';
 
 
-const skills = ['Python', 'PyTorch', 'TensorFlow', 'MERN Stack', 'FastAPI', 'Redis', 'WebGL', 'Docker'];
+const skills = [
+  'JavaScript & TypeScript',
+  'React & React Three Fiber',
+  'Node.js, Express & REST APIs',
+  'Application architecture',
+  'System design fundamentals',
+  'MERN stack',
+  'Python for scripting & data',
+  'Machine learning fundamentals',
+];
 
 const workExperience = [
   {
@@ -70,7 +79,7 @@ export default function Overlay() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-8 relative z-20">
             <header className="text-xs tracking-[0.35em] uppercase text-gray-500 font-bold font-tech">
-              PORTFOLIO 2025
+              SOFTWARE ENGINEER · PORTFOLIO 2025
             </header>
 
             <motion.div
@@ -92,10 +101,11 @@ export default function Overlay() {
               {/* STUDENT STATUS - Clean & Professional */}
               <div className="pt-6 pl-1 border-l border-white/20">
                 <p className="text-lg sm:text-xl text-white font-tech font-medium tracking-wide">
-                  IT Engineering Student
+                  Software Engineer | Full-Stack & Product-Focused Developer
                 </p>
                 <p className="text-sm sm:text-base text-gray-400 mt-2 font-tech max-w-md leading-relaxed">
-                  Specializing in <span className="text-white">Applied Machine Learning</span> & Scalable Web Systems.
+                  Building real-world software products — from idea to deployment. Full-stack systems • Desktop apps • APIs •{' '}
+                  <span className="text-white">exploring machine learning fundamentals</span>.
                 </p>
               </div>
             </motion.div>
@@ -116,10 +126,9 @@ export default function Overlay() {
         <div className='space-y-6'>
           <p className='text-xs tracking-[0.35em] uppercase text-gray-500'>About Me</p>
           <p className='text-lg leading-relaxed text-gray-300'>
-            I engineer systems where <span className="text-white">Machine Learning</span> meets robust architecture. 
-            Leveraging my background in Full Stack and IoT, I build end-to-end predictive applications 
-            that solve complex real-world problems. My focus is on deploying intelligent models 
-            that are scalable, efficient, and impactful.
+            I&apos;m a final-year IT student and software engineer who enjoys building real, usable products. I focus on full-stack systems,
+            application architecture, and user-centric design. Alongside software engineering, I am{' '}
+            <span className="text-white">exploring machine learning fundamentals</span> and how they fit into practical products.
           </p>
         </div>
       </Section>
@@ -143,7 +152,7 @@ export default function Overlay() {
         <div className='space-y-6'>
           <div>
             <p className='text-xs tracking-[0.35em] uppercase text-gray-500'>Featured Projects</p>
-            <h2 className='text-2xl sm:text-3xl font-light text-gray-100'>Engineering Intelligence.</h2>
+            <h2 className='text-2xl sm:text-3xl font-light text-gray-100'>Engineering Software Systems.</h2>
           </div>
           <div className='grid gap-6 md:grid-cols-3 pointer-events-auto'>
             {featuredProjects.map((project) => (
@@ -274,9 +283,9 @@ export default function Overlay() {
       <Section id='contact'>
         <div className='space-y-4'>
           <p className='text-xs tracking-[0.35em] uppercase text-gray-500'>Contact</p>
-          <h2 className='text-3xl font-light text-gray-100'>Let&apos;s build something intelligent.</h2>
+          <h2 className='text-3xl font-light text-gray-100'>Let&apos;s build something useful and robust.</h2>
           <p className='max-w-md text-sm text-gray-400'>
-            Open to ML Engineering roles and Full Stack collaborations.
+            Open to Software Engineer and Full-Stack roles, with interest in teams exploring machine learning.
           </p>
           <a
             href='mailto:atharva.palve10@gmail.com'

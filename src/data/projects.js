@@ -2,6 +2,17 @@
 
 const projects = [
   {
+    title: 'AniVault',
+    category: 'Desktop & Extension',
+    year: '2025',
+    description:
+      'AniVault is a cross-platform desktop application with a browser extension that automatically tracks anime watch activity, syncs metadata via AniList APIs, and stores data locally with a license-based freemium and Pro model. Planned extensions include usage analytics and data-driven recommendations.',
+    tech: ['JavaScript', 'Electron', 'Browser Extension', 'AniList API'],
+    size: 'wide',
+    color: '#3366ff',
+    link: 'https://github.com/Atharvapalve/AniVault.git' // Placeholder: repository and landing will live under this profile
+  },
+  {
     title: 'Multi-Agent Encryption',
     category: 'ML Research',
     year: '2025',
@@ -9,7 +20,7 @@ const projects = [
     tech: ['Python', 'Cryptography', 'Simulation'],
     size: 'wide',
     color: '#3366ff',
-    link: 'https://github.com/Atharvapalve/M.A.S.K..git' // No link yet (Research)
+    link: 'https://github.com/Atharvapalve/M.A.S.K..git' 
   },
   {
     title: 'WaveHabitat',
