@@ -126,7 +126,7 @@ export default function Overlay() {
         <div className='space-y-6'>
           <p className='text-xs tracking-[0.35em] uppercase text-gray-500'>About Me</p>
           <p className='text-lg leading-relaxed text-gray-300'>
-            I&apos;m a final-year IT student and software engineer who enjoys building real, usable products. I focus on full-stack systems,
+            I&apos;m a 3rd year IT student and software engineer who enjoys building real, usable products. I focus on full-stack systems,
             application architecture, and user-centric design. Alongside software engineering, I am{' '}
             <span className="text-white">exploring machine learning fundamentals</span> and how they fit into practical products.
           </p>
